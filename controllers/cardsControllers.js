@@ -34,19 +34,9 @@ const cardControllers = {
                     return
                 }
 
-                // if (result == )
-                // ExpenseModel.find(
-                //     {
-                //         CardName: result.card_slug
-                //     }
-                // )
-    
-    
-
                 res.render('cards/show', {
                     pageTitle: "Show Expenses",
                     item: result,
-                    cardSpent: cardSpent
                 })
             })
             .catch(err => {
