@@ -1,0 +1,25 @@
+<%- include('./../partials/header'); %>
+
+<h1>
+    <%= pageTitle %>
+</h1>
+
+    <p>
+        <%= date %>
+    </p>
+    <p>
+        <%= item.description %>
+    </p>
+    <p>
+        <%= price %>
+    </p>
+    <p>
+        <%= item.category %>
+    </p>
+    <p>
+        <%= item.remarks %>
+    </p>
+
+    <a class="btn btn-primary" href="/expenses">Back</a>
+
+<%- include('./../partials/footer'); %>

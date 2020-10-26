@@ -1,0 +1,51 @@
+<%- include('./../partials/header'); %>
+
+<div class="container">
+    <h1>
+        <%= pageTitle %>
+    </h1>
+
+    <form action="/cards" method="POST">
+        <div class="form-group">
+            <label for="bank_name">Bank Name</label>
+            <select type="text" class="form-control" name="bank_name" id="bank_name">
+              <option>DBS</option>
+              <option>HSBC</option>
+              <option>OCBC</option>
+              <option>UOB</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="card_name">Card Name</label>
+            <input type="text" class="form-control" name="card_name" id="card_name">
+        </div>
+
+        <div class="form-group">
+            <label for="description">Description of Card</label>
+            <input type="text" class="form-control" name="description" id="description">
+        </div>
+
+       <div class="form-group">
+            <label for="type">Reward Type</label>
+            <select type="text" class="form-control" name="type" id="type">
+              <option>Cashback</option>
+              <option>Miles and Points</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="max_cap">Maximum Cap for Reward</label>
+            <input type="text" class="form-control" name="max_cap" id="max_cap">
+        </div>
+
+        <div class="form-group">
+            <label for="img_url">Image URL</label>
+            <input type="url" class="form-control" name="img_url" id="img_url">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+
+<%- include('./../partials/footer'); %>

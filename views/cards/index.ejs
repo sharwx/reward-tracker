@@ -1,0 +1,39 @@
+<%- include('./../partials/header'); %>
+
+<h1>
+    <%= pageTitle %>
+</h1>
+
+<ul>
+    <% cards.forEach( (item, id) => { %>
+        <li class="mb-5">
+            <p>
+                <%= item.bank_name %>
+            </p>
+            <p>
+                <a href="/cards/<%= item.slug %>"><img src="<%= item.img_url %>"/></a>
+            </p>
+            <p>
+                <%= item.card_name %>
+            </p>
+            <p>
+                <%= item.description %>
+            </p>
+            <p>
+                <%= item.max_cap %>
+            </p>
+
+            <div class="action-buttons">
+                <form method="POST" action="/cards/<%= item.slug %>?_method=DELETE">
+                    <button type="submit" class="btn btn-danger">Delete</button>   
+                </form>
+                
+            </div>
+        </li>
+    <% }) %>
+</ul>
+
+<a class="btn btn-primary" href="/cards/new">Add Card</a>
+
+
+<%- include('./../partials/footer'); %>

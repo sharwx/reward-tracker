@@ -1,0 +1,25 @@
+<%- include('./../partials/header'); %>
+
+<h1>
+    <%= pageTitle %>
+</h1>
+
+    <p>
+        <%= item.bank_name %>
+    </p>
+    <p>
+        <img src="<%= item.img_url %>"/>
+    </p>
+    <p>
+        <%= item.card_name %>
+    </p>
+    <p>
+        <%= item.description %>
+    </p>
+    <p>
+        <%= item.max_cap %>
+    </p>
+
+    <a class="btn btn-primary" href="/cards">Back</a>
+
+<%- include('./../partials/footer'); %>

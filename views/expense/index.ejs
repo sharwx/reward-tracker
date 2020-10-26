@@ -1,0 +1,38 @@
+<%- include('./../partials/header'); %>
+
+<h1>
+    <%= pageTitle %>
+</h1>
+
+<ul>
+    <% expense.forEach( (item, id) => { %>
+        <li class="mb-5">
+            <p>
+                <%= moment(item.date).format("D MMM YY") %>
+            </p>
+            <p>
+                <a href="/expenses/<%= item.slug %>"><%= item.description %></a>
+            </p>
+            <p>
+                <%= Number(item.amount).toFixed(2) %>
+            </p>
+            <p>
+                <%= item.payment_mthd %>
+            </p>
+            <p>
+                <%= item.category %>
+            </p>
+
+            <div class="btn-group action-buttons">
+                <a class="btn btn-primary" href="/expenses/<%= item.slug %>/edit">Edit</a> | 
+                <form method="POST" action="/expenses/<%= item.slug %>?_method=DELETE">
+                    <button type="submit" class="btn btn-danger">Delete</button>   
+                </form>
+                
+            </div>
+        </li>
+    <% }) %>
+</ul>
+
+
+<%- include('./../partials/footer'); %>
