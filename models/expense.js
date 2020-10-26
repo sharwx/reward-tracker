@@ -22,6 +22,11 @@ const expenseSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    card_slug: {
+        type: String,
+        required: true,
+        unique: true
+    },
     category: {
         type: String,
         required: true

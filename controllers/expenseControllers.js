@@ -38,7 +38,7 @@ const expenseControllers = {
                     pageTitle: "Show Expenses",
                     item: result,
                     date: moment(result.date).format("D MMM YY"),
-                    price: Number(result.amount).toFixed(2)
+                    price: Number(result.amount).toFixed(2),
                 })
             })
             .catch(err => {
@@ -48,6 +48,7 @@ const expenseControllers = {
 
     createExpenses: (req, res) => {
         const slug = _.kebabCase(req.body.description)
+        const cardSlug = _.kebabCase(req.body.card_slug)
         let date = new Date(req.body.date)
 
         ExpenseModel.create({
@@ -56,6 +57,7 @@ const expenseControllers = {
             slug: slug,
             amount: parseInt(req.body.amount),
             payment_mthd: req.body.payment_mthd,
+            card_slug: cardSlug,
             category: req.body.category,
             remarks: req.body.remarks
         })
@@ -88,6 +90,7 @@ const expenseControllers = {
 
     updateExpenses: (req, res) => {
         const newSlug = _.kebabCase(req.body.description)
+        const newCardSlug = _.kebabCase(req.body.card_slug)
         let date = new Date(req.body.date)
 
         ExpenseModel.findOne({
@@ -102,6 +105,7 @@ const expenseControllers = {
                     slug: newSlug,
                     amount: parseInt(req.body.amount),
                     payment_mthd: req.body.payment_mthd,
+                    card_slug: newCardSlug,
                     category: req.body.category,
                     remarks: req.body.remarks
                 })

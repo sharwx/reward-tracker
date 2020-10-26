@@ -7,6 +7,7 @@ const cardControllers = {
     listCards: (req, res) => {
         
         CardModel.find()
+
             .then(results => {
                 res.render('cards/index', {
                     pageTitle: 'Cards Added',
@@ -32,9 +33,20 @@ const cardControllers = {
                     res.redirect('/cards')
                     return
                 }
+
+                // if (result == )
+                // ExpenseModel.find(
+                //     {
+                //         CardName: result.card_slug
+                //     }
+                // )
+    
+    
+
                 res.render('cards/show', {
                     pageTitle: "Show Expenses",
                     item: result,
+                    cardSpent: cardSpent
                 })
             })
             .catch(err => {
