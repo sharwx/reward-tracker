@@ -48,14 +48,14 @@ const expenseControllers = {
 
     createExpenses: (req, res) => {
         const slug = _.kebabCase(req.body.description)
-        const cardSlug = _.kebabCase(req.body.card_slug)
+        const cardSlug = _.kebabCase(req.body.payment_mthd)
         let date = new Date(req.body.date)
 
         ExpenseModel.create({
             date: date.getUTCFullYear() + " " + monthNames[date.getMonth()] + " " + date.getDate(),
             description: req.body.description,
             slug: slug,
-            amount: parseInt(req.body.amount),
+            amount: parseFloat(req.body.amount),
             payment_mthd: req.body.payment_mthd,
             card_slug: cardSlug,
             category: req.body.category,
@@ -90,7 +90,6 @@ const expenseControllers = {
 
     updateExpenses: (req, res) => {
         const newSlug = _.kebabCase(req.body.description)
-        const newCardSlug = _.kebabCase(req.body.card_slug)
         let date = new Date(req.body.date)
 
         ExpenseModel.findOne({
@@ -103,9 +102,7 @@ const expenseControllers = {
                     date: date.getUTCFullYear() + " " + monthNames[date.getMonth()] + " " + date.getDate(),
                     description: req.body.description,
                     slug: newSlug,
-                    amount: parseInt(req.body.amount),
-                    payment_mthd: req.body.payment_mthd,
-                    card_slug: newCardSlug,
+                    amount: parseFloat(req.body.amount),
                     category: req.body.category,
                     remarks: req.body.remarks
                 })

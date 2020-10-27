@@ -28,28 +28,28 @@ mongoose.connect( mongoURI, { useNewUrlParser: true, useUnifiedTopology: true } 
   })
   .catch(err => {
     console.log(err)
-  })
+})
 
 
 
 // Seed cards
 
-  // mongoose.connect( mongoURI, { useNewUrlParser: true, useUnifiedTopology: true } )
-  // .then(response => {
-  //   console.log('MongoDB connection successful')
-  // })
-  // .then(response => {
-  //   cardModel.insertMany(cardList)
-  //       .then(insertResponse => {
-  //           console.log('Data seeding successful')
-  //       })
-  //       .catch(insertErr => {
-  //           console.log(insertErr)
-  //       })
-  //       .finally(() => {
-  //           mongoose.disconnect()
-  //       })
-  // })
-  // .catch(err => {
-  //   console.log(err)
-  // })
+// mongoose.connect( mongoURI, { useNewUrlParser: true, useUnifiedTopology: true } )
+//   .then(response => {
+//     console.log('MongoDB connection successful')
+//   })
+//   .then(response => {
+//     cardModel.insertMany(cardList)
+//         .then(insertResponse => {
+//             console.log('Data seeding successful')
+//         })
+//         .catch(insertErr => {
+//             console.log(insertErr)
+//         })
+//         .finally(() => {
+//             mongoose.disconnect()
+//         })
+//   })
+//   .catch(err => {
+//     console.log(err)
+// })

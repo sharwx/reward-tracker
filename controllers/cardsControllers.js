@@ -1,3 +1,4 @@
+const { result } = require('lodash')
 const _ = require('lodash')
 const CardModel = require('../models/cards')
 const ExpenseModel = require('../models/expense')
@@ -25,22 +26,50 @@ const cardControllers = {
     showCard: (req, res) => {
         let slug = req.params.slug
 
-        CardModel.findOne({
-            slug: slug
-        })
-            .then(result => {
-                if (! result) {
-                    res.redirect('/cards')
-                    return
-                }
+        ExpenseModel.aggregate([
+            {
+              $match: { card_slug: slug },
+            },
+            {
+              $group: {
+                _id: "$card_slug",
+                amount: { $sum: "$amount" },
+              },
+            },
+        ])
+            .then(expResult => {
+                console.log(expResult)
 
-                res.render('cards/show', {
-                    pageTitle: "Show Expenses",
-                    item: result,
+                CardModel.findOne({
+                    slug: slug
                 })
-            })
-            .catch(err => {
-                res.send(err)
+                    .then(cardResult => {
+                        if (! cardResult) {
+                            res.redirect('/cards')
+                            return
+                        }
+
+                        ExpenseModel.find({
+                            card_slug: cardResult.slug
+                        })
+
+                            .then(itemResult => {
+                                res.render('cards/show', {
+                                    pageTitle: "Show Expenses",
+                                    item: cardResult,
+                                    cardSpent: expResult,
+                                    expItem: itemResult
+                                })
+                            })
+
+                            .catch(err => {
+                                console.log(err)
+                                res.redirect('/cards')
+                            })
+                    })
+                    .catch(err => {
+                        res.send(err)
+                    })
             })
     },
 

@@ -23,6 +23,7 @@ app.locals.moment = moment; // this makes moment available as a variable in ever
 
 const mongoURI = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@${process.env.DB_HOST}/${process.env.DB_NAME}`
 mongoose.set('useFindAndModify', false)
+mongoose.set('useCreateIndex', true);
 
 // =======================================
 //              EXPRESS

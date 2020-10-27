@@ -19,6 +19,25 @@
     <p>
         <%= item.max_cap %>
     </p>
+    <p>
+        Total Amount: <%= Number(cardSpent[0].amount).toFixed(2) %>
+    </p>
+
+    <ul>
+        <% expItem.forEach(expense => { %>
+            <li>
+                <p>
+                    <%= moment(expense.date).format("D MMM YY") %>
+                </p>
+                <p>
+                    <a href="/expenses/<%= expense.slug %>"><%= expense.description %></a>
+                </p>
+                <p>
+                    <%= Number(expense.amount).toFixed(2) %>
+                </p>
+            </li>
+        <% }) %>
+    </ul>
 
     <a class="btn btn-primary" href="/cards">Back</a>
 
