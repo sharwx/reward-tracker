@@ -1,38 +1,68 @@
 <%- include('./../partials/header'); %>
 
-<h1>
-    <%= pageTitle %>
-</h1>
+<div class="container">
 
-<ul>
-    <% expense.forEach( (item, id) => { %>
-        <li class="mb-5">
-            <p>
-                <%= moment(item.date).format("D MMM YY") %>
-            </p>
-            <p>
-                <a href="/expenses/<%= item.slug %>"><%= item.description %></a>
-            </p>
-            <p>
-                <%= Number(item.amount).toFixed(2) %>
-            </p>
-            <p>
-                <%= item.payment_mthd %>
-            </p>
-            <p>
-                <%= item.category %>
-            </p>
+    <div class="title-wrapper has-text-centered ejsTitle">
+        <h2 class="title is-2">
+            <%= pageTitle %>
+        </h2>
+        <div class="divider is-centered"></div>
+    </div>
 
-            <div class="btn-group action-buttons">
-                <a class="btn btn-primary" href="/expenses/<%= item.slug %>/edit">Edit</a> | 
-                <form method="POST" action="/expenses/<%= item.slug %>?_method=DELETE">
-                    <button type="submit" class="btn btn-danger">Delete</button>   
-                </form>
-                
-            </div>
-        </li>
-    <% }) %>
-</ul>
+    <div class="content-wrapper">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Description</th>
+                    <th>Amount</th>
+                    <th>Payment Method</th>
+                    <th>Category</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                <% expense.forEach( (item, id) => { %>
+                <tr>
+                    <td>
+                        <%= moment(item.date).format("D MMM YY") %>
+                    </td>
+                    <td>
+                        <a href="/expenses/<%= item.slug %>"><%= item.description %></a>
+                    </td>
+                    <td>
+                        <%= Number(item.amount).toFixed(2) %>
+                    </td>
+                    <td>
+                        <a href="/cards/<%= item.card_slug %>"><%= item.payment_mthd %></a>
+                    </td>
+                    <td>
+                        <%= item.category %>
+                    </td>
+                    <td>
+                        <a class="icon" href="/expenses/<%= item.slug %>/edit"><i class="fas fa-edit"></i></a>
+                    </td>
+                    <td>
+                        <form method="POST" action="/expenses/<%= item.slug %>?_method=DELETE">
+                            <button type="submit" class="icon has-text-danger button-remove"><i class="fas fa-trash-alt"></i></button>   
+                        </form>
+                    </td>
+                </tr>
+                <% }) %>
+            </tbody>
+
+        </table>
+
+        <p class="has-text-centered mt-20">
+            <a class="button is-medium secondary-btn is-rounded" href="/expenses/new">Add</a>
+        </p>
+
+    </div>
+</div>
+
 
 
 <%- include('./../partials/footer'); %>

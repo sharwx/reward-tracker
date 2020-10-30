@@ -1,0 +1,91 @@
+.ejsTitle {
+    margin: 50px 0 20px 0;
+}
+
+.divider {
+    height: 3px;
+    border-radius: 50px;
+    background: darkblue;
+    width: 200px;
+    margin: 0 auto;
+}
+
+.secondary-btn {
+    outline: none;
+    border-color: #779ecb;
+    background-color: #779ecb;
+    color: white;
+}
+
+.round-btn {
+    border-radius: 100px;
+    margin: 5px;
+}
+
+.feature-card {
+    width: 380px;
+    height: 520px;
+    border-radius: 3px;
+    margin: 0 auto;
+}
+
+
+.is-bordered {
+    border: 1px solid #ededed;
+}
+
+.card-title {
+    margin: 10px;
+}
+
+.card-img {
+    width: 250px;
+    margin: auto;
+}
+
+.card-display {
+    margin: 0 0 10px 0;
+}
+
+.space {
+    padding: 5px;
+}
+
+.pbar-size {
+    width: 300px;
+    margin: 5px auto 10px auto;
+}
+
+.list-card {
+    width: 380px;
+    height: 400px;
+    border-radius: 3px;
+    margin: 0 auto;
+}
+
+.box {
+    border-radius: 6px;
+    box-shadow: 0 2px 3px rgba(10,10,10,.1), 0 0 0 1px rgba(10,10,10,.1);
+    display: block;
+    width: 480px;
+}
+
+.button-remove {
+    border-color: white;
+    background-color: white;
+    border-style: none;
+}
+
+.card-pic {
+    width: 250px;
+    margin: 20px;
+}
+
+#card-pic {
+    display: flex;
+    flex: auto;
+}
+
+#cardpg-add {
+    margin: 10px;
+}

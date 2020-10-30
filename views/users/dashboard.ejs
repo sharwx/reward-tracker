@@ -2,12 +2,41 @@
     
     <div class="container">
 
-        <h1>Welcome to your account</h1>
+        <div class="title-wrapper has-text-centered ejsTitle">
+            <h2 class="title is-2">
+                <%= pageTitle %>
+            </h2>
+            <div class="divider is-centered"></div>
+        </div>
 
-        <div class="btn-group action-buttons">
-            <a class="btn btn-primary" href="/expenses">Expenses</a> 
-            <a class="btn btn-danger" href="/cards">Cards</a>
-            
+        <div class="content-wrapper">
+            <div class="columns">
+                <div class="column is-half" id="card-pic">
+                    <div class="list-card is-bordered has-text-centered">
+
+                        <div class="card-display">
+                            <a href="/expenses"><img src="/icons/display_expenses.png" class="card-pic"/></a>
+                        </div>
+    
+                        <p class="has-text-centered mt-20">
+                            <a class="button is-medium secondary-btn is-rounded" href="/expenses">Expenses</a>
+                        </p>
+
+                    </div>
+
+                    <div class="list-card is-bordered has-text-centered">
+
+                        <div class="card-display">
+                            <a href="/cards"><img src="/icons/display_cards.png" class="card-pic"/></a>
+                        </div>
+    
+                        <p class="has-text-centered mt-20">
+                            <a class="button is-medium secondary-btn is-rounded" href="/cards">Cards</a>
+                        </p>
+
+                    </div>
+                </div>
+            </div>
         </div>
 
     </div>

@@ -1,44 +1,80 @@
 <%- include('./../partials/header'); %>
 
-<h1>
-    <%= pageTitle %>
-</h1>
 
-    <p>
-        <%= item.bank_name %>
-    </p>
-    <p>
-        <img src="<%= item.img_url %>"/>
-    </p>
-    <p>
-        <%= item.card_name %>
-    </p>
-    <p>
-        <%= item.description %>
-    </p>
-    <p>
-        <%= item.max_cap %>
-    </p>
-    <p>
-        Total Amount: <%= Number(cardSpent[0].amount).toFixed(2) %>
+<div class="container">
+
+    <div class="title-wrapper has-text-centered ejsTitle">
+        <h2 class="title is-2">
+            <%= pageTitle %>
+        </h2>
+        <div class="divider is-centered"></div>
+    </div>
+
+    <div class="content-wrapper">
+        <div class="column is-centered">
+            <div class="feature-card is-bordered has-text-centered">
+                
+                <div class="card-title">
+                    <h4 class="has-text-weight-bold"><%= item.bank_name %></h4>
+                </div>
+                <div class="card-display">
+                    <img src="<%= item.img_url %>" class="card-img"/>
+                </div>
+                <div class="card-text">
+                    <p class="space"><span class="has-text-weight-semibold">Card</span><br><%= item.card_name %></p>
+                    <p class="space"><span class="has-text-weight-semibold">Description</span><br><%= item.description %></p>
+                    <p class="space"><span class="has-text-weight-semibold">Total amount spent</span><br>$<%= Number(expValue).toFixed(2) %></p>
+                    <p class="space"><span class="has-text-weight-semibold">Cap</span><br>$<%= item.max_cap %></p>
+                </div>
+                <div class="card-bar">
+                    <div class="pbar-size">
+                        <% if ( (expValue) <= maxValue ) { %>
+                        <progress class="progress is-info" value="<%= expValue %>" max="<%= item.max_cap %>"><%= Number(expValue).toFixed(2) %></progress>
+                        <% } else { %>
+                        <progress class="progress is-danger" value="<%= expValue %>" max="<%= item.max_cap %>"><%= Number(expValue).toFixed(2) %></progress>
+                        <% } %>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="content-wrapper">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Description</th>
+                    <th>Amount</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <% expItem.forEach(expense => { %>
+                    <tr>
+                        <td>
+                            <%= moment(expense.date).format("D MMM YY") %>
+                        </td>
+                        <td>
+                            <a href="/expenses/<%= expense.slug %>"><%= expense.description %></a>
+                        </td>
+                        <td>
+                            <%= Number(expense.amount).toFixed(2) %>
+                        </td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </div>
+
+
+    <p class="has-text-centered mt-20">
+        <a class="button is-medium secondary-btn is-rounded" href="/cards">Back to Cards</a>
     </p>
 
-    <ul>
-        <% expItem.forEach(expense => { %>
-            <li>
-                <p>
-                    <%= moment(expense.date).format("D MMM YY") %>
-                </p>
-                <p>
-                    <a href="/expenses/<%= expense.slug %>"><%= expense.description %></a>
-                </p>
-                <p>
-                    <%= Number(expense.amount).toFixed(2) %>
-                </p>
-            </li>
-        <% }) %>
-    </ul>
 
-    <a class="btn btn-primary" href="/cards">Back</a>
+
+</div>
 
 <%- include('./../partials/footer'); %>

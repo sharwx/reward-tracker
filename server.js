@@ -53,32 +53,26 @@ app.use(setUserVarMiddleware)
 
 
 // INDEX Route
-// app.get('/expenses', authenticatedOnlyMiddleware, expenseControllers.listExpenses)
-app.get('/expenses', expenseControllers.listExpenses)
+app.get('/expenses', authenticatedOnlyMiddleware, expenseControllers.listExpenses)
 
 // NEW Route
-// app.get('/expenses/new', authenticatedOnlyMiddleware, expenseControllers.newExpenses)
-app.get('/expenses/new', expenseControllers.newExpenses)
+app.get('/expenses/new', authenticatedOnlyMiddleware, expenseControllers.newExpenses)
 
 // SHOW Route
-// app.get('/expenses/:slug', authenticatedOnlyMiddleware, expenseControllers.showExpenses)
-app.get('/expenses/:slug', expenseControllers.showExpenses)
+app.get('/expenses/:slug', authenticatedOnlyMiddleware, expenseControllers.showExpenses)
 
 // CREATE Route
-// app.post('/expenses', authenticatedOnlyMiddleware, expenseControllers.createExpenses)
-app.post('/expenses', expenseControllers.createExpenses)
+app.post('/expenses', authenticatedOnlyMiddleware, expenseControllers.createExpenses)
 
 // EDIT Route
-// app.get('/expenses/:slug/edit', authenticatedOnlyMiddleware, expenseControllers.editExpenses)
-app.get('/expenses/:slug/edit', expenseControllers.editExpenses)
+app.get('/expenses/:slug/edit', authenticatedOnlyMiddleware, expenseControllers.editExpenses)
 
 // UPDATE Route
-// app.patch('/expenses/:slug/', authenticatedOnlyMiddleware, expenseControllers.updateExpenses)
-app.patch('/expenses/:slug/', expenseControllers.updateExpenses)
+app.patch('/expenses/:slug/', authenticatedOnlyMiddleware, expenseControllers.updateExpenses)
+
 
 // DELETE Route
-// app.delete('/expenses/:slug/', authenticatedOnlyMiddleware, expenseControllers.deleteExpenses)
-app.delete('/expenses/:slug/', expenseControllers.deleteExpenses)
+app.delete('/expenses/:slug/', authenticatedOnlyMiddleware, expenseControllers.deleteExpenses)
 
 // USER REGISTER FORM Route
 app.get('/users/register', guestOnlyMiddleware, UsersControllers.newUser)
@@ -99,19 +93,19 @@ app.get('/', authenticatedOnlyMiddleware, UsersControllers.dashboard)
 app.post('/users/logout', authenticatedOnlyMiddleware, UsersControllers.logout)
 
 // CARD INDEX Route
-app.get('/cards', cardsControllers.listCards)
+app.get('/cards', authenticatedOnlyMiddleware, cardsControllers.listCards)
 
 // CARD NEW Route
-app.get('/cards/new', cardsControllers.newCard)
+app.get('/cards/new', authenticatedOnlyMiddleware, cardsControllers.newCard)
 
 // CARD SHOW Route
-app.get('/cards/:slug', cardsControllers.showCard)
+app.get('/cards/:slug', authenticatedOnlyMiddleware, cardsControllers.showCard)
 
 // CARD CREATE Route
-app.post('/cards', cardsControllers.createCard)
+app.post('/cards', authenticatedOnlyMiddleware, cardsControllers.createCard)
 
 // CARD DELETE Route
-app.delete('/cards/:slug/', cardsControllers.deleteCard)
+app.delete('/cards/:slug/', authenticatedOnlyMiddleware, cardsControllers.deleteCard)
 
 
 // =======================================

@@ -18,9 +18,14 @@ const expenseControllers = {
     },
 
     newExpenses: (req, res) => {
-        res.render('expense/new',{
-            pageTitle: 'Create new item'
-        })
+
+        CardModel.find()
+            .then(results => {
+                res.render('expense/new',{
+                    pageTitle: 'Add Item',
+                    expense: results
+                })
+            })
     },
 
     showExpenses: (req, res) => {
@@ -35,7 +40,7 @@ const expenseControllers = {
                     return
                 }
                 res.render('expense/show', {
-                    pageTitle: "Show Expenses",
+                    pageTitle: "Breakdown",
                     item: result,
                     date: moment(result.date).format("D MMM YY"),
                     price: Number(result.amount).toFixed(2),
@@ -77,7 +82,7 @@ const expenseControllers = {
         })
             .then(result => {
                 res.render('expense/edit', {
-                    pageTitle: "Edit for " + result.description,
+                    pageTitle: "Edit: " + result.description,
                     item: result,
                     itemID: result.slug
         
@@ -103,7 +108,6 @@ const expenseControllers = {
                     description: req.body.description,
                     slug: newSlug,
                     amount: parseFloat(req.body.amount),
-                    category: req.body.category,
                     remarks: req.body.remarks
                 })
                     .then(updateResult => {

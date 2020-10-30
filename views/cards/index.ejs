@@ -1,37 +1,51 @@
 <%- include('./../partials/header'); %>
 
-<h1>
-    <%= pageTitle %>
-</h1>
+<div class="container">
 
-<ul>
-    <% cards.forEach( (item, id) => { %>
-        <li class="mb-5">
-            <p>
-                <%= item.bank_name %>
-            </p>
-            <p>
-                <a href="/cards/<%= item.slug %>"><img src="<%= item.img_url %>"/></a>
-            </p>
-            <p>
-                <%= item.card_name %>
-            </p>
-            <p>
-                <%= item.description %>
-            </p>
-            <p>
-                <%= item.max_cap %>
-            </p>
+    <div class="title-wrapper has-text-centered ejsTitle">
+        <h2 class="title is-2">
+            <%= pageTitle %>
+        </h2>
+        <div class="divider is-centered"></div>
+    </div>
 
-            <div class="action-buttons">
-                <form method="POST" action="/cards/<%= item.slug %>?_method=DELETE">
-                    <button type="submit" class="btn btn-danger">Delete</button>   
-                </form>
-                
+    <div class="content-wrapper">
+        <div class="columns is-multiline">
+
+            <% cards.forEach( (item, id) => { %>
+            <div class="column is-centered is-4">
+                <div class="list-card is-bordered has-text-centered">
+                    
+                    <div class="card-title">
+                        <h4 class="has-text-weight-bold"><%= item.bank_name %></h4>
+                    </div>
+                    <div class="card-display">
+                        <a href="/cards/<%= item.slug %>"><img src="<%= item.img_url %>" class="card-img"/></a>
+                    </div>
+                    <div class="card-text">
+                        <p class="space"><a href="/cards/<%= item.slug %>"><%= item.card_name %></a></p>
+                        <p class="space"><%= item.type %></p>
+                        <p class="space"><span class="has-text-weight-semibold">Cap</span><br>$<%= item.max_cap %></p>
+                    </div>
+
+                    <div class="action-buttons">
+                        <form method="POST" action="/cards/<%= item.slug %>?_method=DELETE">
+                            <button type="submit" class="button is-danger is-rounded">Delete</button>   
+                        </form>
+                    </div>
+
+
+                </div>
             </div>
-        </li>
-    <% }) %>
-</ul>
+            <% }) %>
+        </div>
+    </div>
+
+    <p class="has-text-centered mt-20">
+        <a class="button secondary-btn is-rounded" id="cardpg-add" href="/cards/new">Add</a>
+    </p>
+
+</div>
 
 
 <%- include('./../partials/footer'); %>

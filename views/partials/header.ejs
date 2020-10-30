@@ -7,59 +7,65 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600" rel="stylesheet">
     <link rel="stylesheet" href="/css/app.css">
     
-    <title>Reward Tracker</title>
+    <title>Rewards Tracker</title>
   </head>
   <body>
-  
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="/">Reward Tracker</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
 
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
+    <nav class="navbar is-light" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <a class="navbar-item" href="/">
+          <img src="/icons/credit-card.svg" width="112" height="28">
+        </a>
+    
+      <div id="navbarBasicExample" class="navbar-menu">
 
-          <% if (user === null) { %>
+      <% if (user === null) { %>
 
-            <li class="nav-item">
-              <a class="nav-link" href="/users/login">Login</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/users/register">Register</a>
-            </li>
-
-          <% } else { %>
-
-            <div class="dropdown">
-              <button class="btn dropdown-toggle" type="button" id="expensesDropDown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Expenses
-              </button>
-              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="/expenses">List of Expenses</a>
-                <a class="dropdown-item" href="/expenses/new">Add Expenses</a>
+          <div class="navbar-end">
+            <div class="navbar-item">
+              <div class="buttons">
+                  <a class="button secondary-btn is-rounded" href="/users/register"><strong>Register</strong></a>
+                  <a class="button secondary-btn is-rounded" href="/users/login">Login</a>
               </div>
             </div>
+          </div>
 
-            <div class="dropdown">
-              <button class="btn dropdown-toggle" type="button" id="cardsDropDown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Cards
-              </button>
-              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="/cards">List of Cards</a>
-                <a class="dropdown-item disabled" href="/cards/new">Add Cards</a>
-              </div>
+      <% } else { %>
+
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link">Expenses</a>
+    
+            <div class="navbar-dropdown">
+              <a class="navbar-item" href="/expenses">List of Expenses</a>
+              <a class="navbar-item" title = "Disabled" href="/expenses/new">Add Expenses</a>
             </div>
+          </div>
 
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link">
+              Cards
+            </a>
+    
+            <div class="navbar-dropdown">
+              <a class="navbar-item" href="/cards">List of Cards</a>
+              <hr class="navbar-divider">
+              <a class="navbar-item" href="/cards/new">Add Card</a>
+            </div>
+          </div>
 
-            <form method="POST" action="/users/logout">
-              <button type="submit" class="btn nav-link" style="border: 0">Logout</button>
-            </form>
+          <div class="navbar-end">
+            <div class="navbar-item">
+              <form method="POST" action="/users/logout">
+                  <button class="button secondary-btn is-rounded" href="/users/logout"><strong>Logout</strong></button>
+                </a>
+              </form>
+            </div>
+          </div>
 
-          <% } %>
+      <% } %>
 
-        </ul>
-      </div>
-  </nav>
+    </nav>

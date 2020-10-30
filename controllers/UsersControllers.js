@@ -48,7 +48,7 @@ const UsersControllers = {
                 })
 
                     .then(createResult => {
-                        res.redirect('/expenses')
+                        res.redirect('/')
                     })
                     .catch(err => {
                         res.redirect('/users/register')
@@ -107,9 +107,11 @@ const UsersControllers = {
     },
 
     dashboard: (req, res) => {
+
         res.render('users/dashboard', {
-            pageTitle: 'User Dashboard'
+            pageTitle: 'Welcome!'
         })
+    
     },
 
     logout: (req, res) => {

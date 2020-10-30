@@ -1,62 +1,88 @@
 <%- include('./../partials/header'); %>
 
 <div class="container">
-    <h1>
-        <%= pageTitle %>
-    </h1>
 
-    <form action="/expenses" method="POST">
-        <div class="form-group">
-            <label for="date">Date</label>
-            <input type="text" class="form-control" placeholder="DD MMM YYYY (eg: 01 Jan 2020)" name="date" id="date">
+    <div class="title-wrapper has-text-centered ejsTitle">
+        <h2 class="title is-2">
+            <%= pageTitle %>
+        </h2>
+        <div class="divider is-centered"></div>
+    </div>
+
+    <div class="columns is-centered">
+        <div class="column is-narrow">
+            <div class="box">
+
+                <form action="/expenses" method="POST">
+                    <div class="field">
+                        <label class="date has-text-weight-bold">Date</label>
+                        <div class="control">
+                            <input type="text" class="input" placeholder="DD MMM YYYY (eg: 01 Jan 2020)" name="date" id="date">
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label class="description has-text-weight-bold">Description</label>
+                        <div class="control">
+                            <input type="text" class="input" name="description" id="description">
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label class="amount has-text-weight-bold">Amount</label>
+                        <div class="control">
+                            <input type="text" class="input" name="amount" id="amount">
+                        </div>    
+                    </div>
+
+                    <div class="field">
+                        <label class="payment_mthd has-text-weight-bold">Payment Method</label>
+                        <div class="control">
+                            <select type="text" class="select" name="payment_mthd" id="payment_mthd">
+                                <% expense.forEach( item => { %>
+                                    <option><%= item.card_name %></option>
+                                <% }) %>
+                                <!-- <option>Lady's Card</option>
+                                <option>Preferred Platinum Visa</option>
+                                <option>Revolution</option>
+                                <option>Titanium</option>
+                                <option>Woman's World Card</option>
+                                <option>Advance</option> -->
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label class="category has-text-weight-bold">Category</label>
+                        <div class="control">
+                            <select type="text" class="select" name="category" id="category">
+                                <option>Beauty & Wellness</option>
+                                <option>Entertainment</option>
+                                <option>Fashion</option>
+                                <option>Dining</option>
+                                <option>Family</option>
+                                <option>Paywave</option>
+                                <option>Shopping (Online)</option>
+                                <option>Shopping (Offline)</option>
+                                <option>Travel</option>
+                                <option>Transport</option>
+                                <option>Cashback</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label class="remarks has-text-weight-bold">Remarks</label>
+                        <input class="input" name="remarks" id="remarks">
+                    </div>
+
+                    <button type="submit" class="button secondary-btn is-rounded">Submit</button>
+                </form>
+
+
+            </div>
         </div>
-
-        <div class="form-group">
-            <label for="description">Description</label>
-            <input type="text" class="form-control" name="description" id="description">
-        </div>
-
-        <div class="form-group">
-            <label for="amount">Amount</label>
-            <input type="text" class="form-control" name="amount" id="amount">
-        </div>
-
-        <div class="form-group">
-            <label for="payment_mthd">Payment Method</label>
-            <select type="text" class="form-control" name="payment_mthd" id="payment_mthd">
-              <option>Lady's Card</option>
-              <option>Preferred Platinum Visa</option>
-              <option>Revolution</option>
-              <option>Titanium</option>
-              <option>Woman's World Card</option>
-              <option>Advance</option>
-            </select>
-        </div>
-
-        <div class="form-group">
-            <label for="category">Category</label>
-            <select type="text" class="form-control" name="category" id="category">
-              <option>Beauty & Wellness</option>
-              <option>Entertainment</option>
-              <option>Fashion</option>
-              <option>Dining</option>
-              <option>Family</option>
-              <option>Paywave</option>
-              <option>Shopping (Online)</option>
-              <option>Shopping (Offline)</option>
-              <option>Travel</option>
-              <option>Transport</option>
-              <option>Cashback</option>
-            </select>
-        </div>
-
-        <div class="form-group">
-            <label for="remarks">Remarks</label>
-            <input type="text" class="form-control" name="remarks" id="remarks">
-        </div>
-
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+    </div>
 </div>
 
 <%- include('./../partials/footer'); %>

@@ -19,12 +19,13 @@ const cardControllers = {
 
     newCard: (req, res) => {
         res.render('cards/new',{
-            pageTitle: 'Add new card'
+            pageTitle: 'Add Card'
         })
     },
 
     showCard: (req, res) => {
         let slug = req.params.slug
+        
 
         ExpenseModel.aggregate([
             {
@@ -38,12 +39,12 @@ const cardControllers = {
             },
         ])
             .then(expResult => {
-                console.log(expResult)
 
                 CardModel.findOne({
                     slug: slug
                 })
                     .then(cardResult => {
+                        let maxValue = cardResult.max_cap
                         if (! cardResult) {
                             res.redirect('/cards')
                             return
@@ -58,7 +59,9 @@ const cardControllers = {
                                     pageTitle: "Show Expenses",
                                     item: cardResult,
                                     cardSpent: expResult,
-                                    expItem: itemResult
+                                    expItem: itemResult,
+                                    expValue: expResult[0].amount,
+                                    maxValue: 0.75*(maxValue)
                                 })
                             })
 
@@ -70,6 +73,9 @@ const cardControllers = {
                     .catch(err => {
                         res.send(err)
                     })
+                .catch(err => {
+                    res.send(err)
+                })
             })
     },
 
@@ -86,7 +92,7 @@ const cardControllers = {
             img_url: req.body.img_url
         })
             .then(results => {
-                res.redirect('/cards/' + slug)
+                res.redirect('/expenses/new')
             })
             .catch(err => {
                 console.log(err)

@@ -1,25 +1,62 @@
 <%- include('./../partials/header'); %>
 
-<h1>
-    <%= pageTitle %>
-</h1>
+<div class="container">
 
-    <p>
-        <%= date %>
-    </p>
-    <p>
-        <%= item.description %>
-    </p>
-    <p>
-        <%= price %>
-    </p>
-    <p>
-        <%= item.category %>
-    </p>
-    <p>
-        <%= item.remarks %>
-    </p>
+    <div class="title-wrapper has-text-centered ejsTitle">
+        <h2 class="title is-2">
+            <%= pageTitle %>
+        </h2>
+        <div class="divider is-centered"></div>
+    </div>
 
-    <a class="btn btn-primary" href="/expenses">Back</a>
+    <div class="content-wrapper">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Description</th>
+                    <th>Amount</th>
+                    <th>Payment Method</th>
+                    <th>Category</th>
+                    <th>Remarks</th>
+                    <th>Edit</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>
+                        <%= date %>
+                    </td>
+                    <td>
+                        <%= item.description %>
+                    </td>
+                    <td>
+                        <%= price %>
+                    </td>
+                    <td>
+                        <%= item.payment_mthd %>
+                    </td>
+                    <td>
+                        <%= item.category %>
+                    </td>
+                    <td>
+                        <%= item.remarks %>
+                    </td>
+                    <td>
+                        <a class="icon" href="/expenses/<%= item.slug %>/edit"><i class="fas fa-edit"></i></a>
+                    </td>
+                </tr>
+            </tbody>
+
+        </table>
+
+        <p class="has-text-centered mt-20">
+            <a class="button is-medium secondary-btn round-btn" href="/expenses">Back to Expenses</a>
+        </p>
+
+    </div>
+</div>
+
 
 <%- include('./../partials/footer'); %>

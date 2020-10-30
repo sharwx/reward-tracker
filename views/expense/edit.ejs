@@ -1,51 +1,52 @@
 <%- include('./../partials/header'); %>
 
 <div class="container">
-    <h1>
-        <%= pageTitle %>
-    </h1>
 
-    <form action="/expenses/<%= itemID %>?_method=PATCH" method="POST">
-        <div class="form-group">
-            <label for="date">Date</label>
-            <input type="text" class="form-control" placeholder="DD MMM YYYY (eg: 01 Jan 2020)" name="date" id="date" value="<%= moment(item.date).format("D MMM YY") %>">
+    <div class="title-wrapper has-text-centered ejsTitle">
+        <h2 class="title is-2">
+            <%= pageTitle %>
+        </h2>
+        <div class="divider is-centered"></div>
+    </div>
+
+    <div class="columns is-centered">
+        <div class="column is-narrow">
+            <div class="box">
+
+                <form action="/expenses/<%= itemID %>?_method=PATCH" method="POST">
+                    <div class="field">
+                        <label class="date has-text-weight-bold">Date</label>
+                        <div class="control">
+                            <input type="text" class="input" placeholder="DD MMM YYYY (eg: 01 Jan 2020)" name="date" id="date" value="<%= moment(item.date).format("D MMM YY") %>">
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label class="description has-text-weight-bold">Description</label>
+                        <div class="control">
+                            <input type="text" class="input" name="description" id="description" value="<%= item.description %>">
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label class="amount has-text-weight-bold">Amount</label>
+                        <div class="control">
+                            <input type="text" class="input" name="amount" id="amount" value="<%= item.amount %>">
+                        </div>    
+                    </div>
+
+                    <div class="field">
+                        <label class="remarks has-text-weight-bold">Remarks</label>
+                        <input class="input" name="remarks" id="remarks" value="<%= item.remarks %>">
+                    </div>
+
+                    <button type="submit" class="button secondary-btn is-rounded">Submit</button>
+                </form>
+
+
+            </div>
         </div>
-
-        <div class="form-group">
-            <label for="description">Description</label>
-            <input type="text" class="form-control" name="description" id="description" value="<%= item.description %>">
-        </div>
-
-        <div class="form-group">
-            <label for="amount">Amount</label>
-            <input type="text" class="form-control" name="amount" id="amount" value="<%= item.amount %>">
-        </div>
-
-        <div class="form-group">
-            <label for="category">Category</label>
-            <select type="text" class="form-control" name="category" id="category" value="<%= item.category %>">
-                <option>Beauty & Wellness</option>
-                <option>Entertainment</option>
-                <option>Fashion</option>
-                <option>Dining</option>
-                <option>Family</option>
-                <option>Paywave</option>
-                <option>Shopping (Online)</option>
-                <option>Shopping (Offline)</option>
-                <option>Travel</option>
-                <option>Transport</option>
-                <option>Cashback</option>
-            </select>
-        </div>
-
-
-        <div class="form-group">
-            <label for="remarks">Remarks</label>
-            <input type="remarks" class="form-control" name="remarks" id="remarks" value="<%= item.remarks %>">
-        </div>
-
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+    </div>
 </div>
 
 
