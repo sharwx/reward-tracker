@@ -5,7 +5,7 @@ A basic credit card threshold tracker to keep track of your rewards. This app wi
 **URL: https://rewardstracker.herokuapp.com/**
 
 ## Technologies
-HTML, CSS, JavaScript, MVC, nodeJs, express, ejs, MongoDB, Mongoose
+HTML, CSS, JavaScript, MVC, nodeJs, express, ejs, MongoDB, Mongoose<br />
 CSS Library: Bulma
 
 ## Features
